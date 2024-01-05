@@ -1,3 +1,23 @@
+/* 
+Description
+Viết chương trình tìm kiếm chuỗi con trong 1 chuỗi. Yêu cầu là tìm kiếm đếm một chuỗi con xem chuỗi con đó xuất hiện  bao nhiêu lần trong một chuỗi.
+
+Input:
+Dòng 1: Chứa chuỗi con cần đếm.
+Dòng 2: Chứa chuỗi lớn.
+
+Ouput:
+Số lần xuất hiện.
+Ví dụ:
+
+Input
+te
+dai hoc kinh te quoc dan
+
+Output
+1
+*/
+
 #include <iostream>
 #include <string>
 

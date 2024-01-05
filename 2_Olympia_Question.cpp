@@ -1,3 +1,15 @@
+/* 
+
+Description
+Cho bốn số nguyên dương phân biệt sao cho tổng của mỗi hai số chia hết cho 2 và tổng của mỗi ba số chia hết cho 3. Tìm giá trị nhỏ nhất của tổng bốn số này?
+
+Input:
+
+Output:
+Tổng_nhỏ_nhất
+Số_1 Số_2 Số_3 Số_4 
+*/
+
 #include <iostream>
 #include <vector>
 
