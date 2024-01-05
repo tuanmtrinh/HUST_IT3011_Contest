@@ -1,5 +1,3 @@
-// P__IT3011 - Chương 1 - Bài 4 - Đổi sang cơ số 2
-
 #include <iostream>
 
 int main() {

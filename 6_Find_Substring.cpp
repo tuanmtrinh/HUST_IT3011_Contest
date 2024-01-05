@@ -1,5 +1,3 @@
-// P__IT3011_C1B10: Tìm kiếm chuỗi con trong một chuỗi
-
 #include <iostream>
 #include <string>
 

@@ -1,5 +1,3 @@
-// P__IT3011-CHUONG1-BAI7: Tính tổng giá trị của một mảng 2 chiều
-
 #include <iostream>
 
 int main() {
