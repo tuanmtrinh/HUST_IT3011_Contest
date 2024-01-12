@@ -1,4 +1,4 @@
-/* 
+/*
 Description
 Perform a sequence of operations over a stack, each element is an integer:
 PUSH v: push a value v into the stack
@@ -32,11 +32,46 @@ Output
 */
 
 #include <iostream>
-#include <stack>
 #include <string>
 
+struct Node {
+    int value;
+    Node* next;
+};
+
+class Stack {
+private:
+    Node* top;
+
+public:
+    Stack() : top(nullptr) {}
+
+    void push(int value) {
+        Node* newNode = new Node;
+        newNode->value = value;
+        newNode->next = top;
+        top = newNode;
+    }
+
+    int pop() {
+        if (isEmpty()) {
+            return NULL;
+        } else {
+            int poppedValue = top->value;
+            Node* temp = top;
+            top = top->next;
+            delete temp;
+            return poppedValue;
+        }
+    }
+
+    bool isEmpty() {
+        return top == nullptr;
+    }
+};
+
 int main() {
-    std::stack<int> stack;
+    Stack stack;
 
     std::string command;
     while (std::cin >> command) {
@@ -45,12 +80,11 @@ int main() {
             std::cin >> value;
             stack.push(value);
         } else if (command == "POP") {
-            if (stack.empty()) {
+            int poppedValue = stack.pop();
+            if (poppedValue == NULL) {
                 std::cout << "NULL" << std::endl;
             } else {
-                int top = stack.top();
-                stack.pop();
-                std::cout << top << std::endl;
+                std::cout << poppedValue << std::endl;
             }
         }
     }

@@ -33,21 +33,31 @@ Output2
 */
 
 #include <iostream>
+#include <vector>
+
+int sumArray(const std::vector<std::vector<int>>& arr, int m, int n, int i = 0, int j = 0) {
+    if (i == m) {
+        return 0;
+    }
+    if (j == n) {
+        return sumArray(arr, m, n, i + 1, 0);
+    }
+    return arr[i][j] + sumArray(arr, m, n, i, j + 1);
+}
 
 int main() {
-  int m, n;
-  std::cin >> m >> n;
+    int m, n;
+    std::cin >> m >> n;
 
-  int arr[m][n];
-  int sum = 0;
-  for (int i = 0; i < m; i++) {
-    for (int j = 0; j < n; j++) {
-      std::cin >> arr[i][j];
-      sum += arr[i][j];
+    std::vector<std::vector<int>> arr(m, std::vector<int>(n));
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            std::cin >> arr[i][j];
+        }
     }
-  }
 
-  std::cout << sum << std::endl;
+    int sum = sumArray(arr, m, n);
+    std::cout << sum << std::endl;
 
-  return 0;
+    return 0;
 }

@@ -25,16 +25,25 @@ Output: A 3
 #include <map>
 #include <cctype>
 
+std::map<char, int> countCharsRecursively(const std::string& input, int index, std::map<char, int>& charCounts) {
+    if (index == input.size()) {
+        return charCounts;
+    }
+    
+    char c = input[index];
+    if (c != ' ') {
+        charCounts[std::toupper(c)]++;
+    }
+    
+    return countCharsRecursively(input, index + 1, charCounts);
+}
+
 int main() {
     std::string input;
     std::getline(std::cin, input);
 
     std::map<char, int> charCounts;
-    for (char c : input) {
-        if (c != ' ') {
-            charCounts[std::toupper(c)]++;
-        }
-    }
+    charCounts = countCharsRecursively(input, 0, charCounts);
 
     for (const auto& pair : charCounts) {
         std::cout << pair.first << ":" << pair.second << " ";

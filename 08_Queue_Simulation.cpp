@@ -1,4 +1,4 @@
-/* 
+/*
 Description
 Perform a sequence of operations over a queue, each element is an integer:
 PUSH v: push a value v into the queue
@@ -35,8 +35,50 @@ Output
 #include <queue>
 #include <string>
 
+struct Node {
+    int value;
+    Node* next;
+};
+
+class Queue {
+private:
+    Node* front;
+    Node* rear;
+
+public:
+    Queue() {
+        front = nullptr;
+        rear = nullptr;
+    }
+
+    void push(int value) {
+        Node* newNode = new Node;
+        newNode->value = value;
+        newNode->next = nullptr;
+
+        if (rear == nullptr) {
+            front = newNode;
+            rear = newNode;
+        } else {
+            rear->next = newNode;
+            rear = newNode;
+        }
+    }
+
+    void pop() {
+        if (front == nullptr) {
+            std::cout << "NULL" << std::endl;
+        } else {
+            Node* temp = front;
+            std::cout << temp->value << std::endl;
+            front = front->next;
+            delete temp;
+        }
+    }
+};
+
 int main() {
-    std::queue<int> q;
+    Queue q;
     std::string command;
     int value;
 
@@ -45,12 +87,7 @@ int main() {
             std::cin >> value;
             q.push(value);
         } else if (command == "POP") {
-            if (!q.empty()) {
-                std::cout << q.front() << std::endl;
-                q.pop();
-            } else {
-                std::cout << "NULL" << std::endl;
-            }
+            q.pop();
         } else if (command == "#") {
             break;
         }

@@ -21,16 +21,18 @@ Output
 #include <iostream>
 #include <string>
 
-int countOccurrences(const std::string& input, const std::string& search) {
-    int count = 0;
-    size_t pos = 0;
-    
-    while ((pos = input.find(search, pos)) != std::string::npos) {
-        count++;
-        pos += search.length();
+int countOccurrences(const std::string& input, const std::string& search, size_t startPos = 0) {
+    if (startPos >= input.size()) {
+        return 0;
     }
     
-    return count;
+    size_t pos = input.find(search, startPos);
+    
+    if (pos == std::string::npos) {
+        return 0;
+    }
+    
+    return 1 + countOccurrences(input, search, pos + search.length());
 }
 
 int main() {
