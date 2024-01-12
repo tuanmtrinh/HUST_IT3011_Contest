@@ -15,17 +15,20 @@ Ghi dãy đã được sắp xếp theo thứ tự không giảm, các phần t�
 
 using namespace std;
 
-void selectionSort(vector<int>& arr) {
-    int n = arr.size();
-    for (int i = 0; i < n - 1; i++) {
-        int min_index = i;
-        for (int j = i + 1; j < n; j++) {
-            if (arr[j] < arr[min_index]) {
-                min_index = j;
-            }
-        }
-        swap(arr[i], arr[min_index]);
+void selectionSort(vector<int>& arr, int start) {
+    if (start >= arr.size() - 1) {
+        return;
     }
+    
+    int min_index = start;
+    for (int i = start + 1; i < arr.size(); i++) {
+        if (arr[i] < arr[min_index]) {
+            min_index = i;
+        }
+    }
+    swap(arr[start], arr[min_index]);
+    
+    selectionSort(arr, start + 1);
 }
 
 int main() {
@@ -36,7 +39,7 @@ int main() {
         cin >> arr[i];
     }
 
-    selectionSort(arr);
+    selectionSort(arr, 0);
 
     for (int i = 0; i < n; i++) {
         cout << arr[i] << " ";

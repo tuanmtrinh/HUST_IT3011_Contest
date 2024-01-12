@@ -15,17 +15,22 @@ Ghi dãy đã được sắp xếp theo thứ tự không giảm, các phần t�
 
 using namespace std;
 
-void insertionSort(vector<int>& arr) {
-    int n = arr.size();
-    for (int i = 1; i < n; i++) {
-        int key = arr[i];
-        int j = i - 1;
-        while (j >= 0 && arr[j] > key) {
-            arr[j + 1] = arr[j];
-            j = j - 1;
-        }
-        arr[j + 1] = key;
+void insert(vector<int>& arr, int sortedIndex) {
+    if (sortedIndex <= 0) {
+        return;
     }
+    if (arr[sortedIndex] < arr[sortedIndex - 1]) {
+        swap(arr[sortedIndex], arr[sortedIndex - 1]);
+        insert(arr, sortedIndex - 1);
+    }
+}
+
+void insertionSort(vector<int>& arr, int sortedIndex = 0) {
+    if (sortedIndex >= arr.size()) {
+        return;
+    }
+    insert(arr, sortedIndex);
+    insertionSort(arr, sortedIndex + 1);
 }
 
 int main() {
